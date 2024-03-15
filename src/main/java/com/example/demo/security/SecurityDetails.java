@@ -16,20 +16,21 @@ public class SecurityDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        if(warden.isAdmin()){
+        if(warden.isIs_admin()){
             return List.of(()->"write");
         }
-        return null;
+        return List.of(()->"read");
     }
 
     @Override
     public String getPassword() {
-        return warden.password();
+
+        return warden.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return warden.name();
+        return warden.getName();
     }
 
     @Override
